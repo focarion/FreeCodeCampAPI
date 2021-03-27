@@ -8,17 +8,14 @@ var absolutePath = __dirname + "/views/index.html"
     app.use(express.static(__dirname + "/public"));
 
 
-    if(process.env.MESSAGE_STYLE==='uppercase'){
+app.get("/json", function(req, res) {
+   var Response = { "message": "Hello json"};
 
-        message = "Hello json".toUpperCase();
-         
-       }
-       else{
-         message = "Hello json";
-       }
-    app.get("/json", (req, res) => {
-    res.json({"message": message})
-    })
+   if(process.env.MESSAGE_STYLE === "uppercase") {
+      Response.message = Response.message.toUpperCase()
+   }
+   res.json(Response);
+});
 
 
 
