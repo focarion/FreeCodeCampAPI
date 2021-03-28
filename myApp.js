@@ -22,16 +22,18 @@ app.get("/json", function(req, res) {
    res.json(Response);
 });
 
-function GetTime(){
-   return new Date().toString;
-}
-
-app.get('/now', function(req, res, next) {
-   req.time = GetTime();
-   next();
- }, function(req, res) {
-   res.json({time: req.time});
- });
+app.get(
+   "/now",
+   (req, res, next) => {
+     req.time = new Date().toString();
+     next();
+   },
+   (req, res) => {
+     res.send({
+       time: req.time
+     });
+   }
+ );
 
 
 
