@@ -34,7 +34,7 @@ app.get(
      });
    }
  );
- 
+
  app.get("/:word/echo", (req, res) => {
    const { word } = req.params;
    res.json({
@@ -42,6 +42,16 @@ app.get(
    });
  });
 
+ app.get("/name", function(req, res) {
+   var firstName = req.query.first;
+   var lastName = req.query.last;
+
+   var { first: firstName, last: lastName } = req.query;
+
+   res.json({
+     name: `${firstName} ${lastName}`
+   });
+ });
 
 
 
