@@ -3,7 +3,7 @@ var app = express();
 require('dotenv').config()
 
 app.use(function middleware(req, res, next) {
-   var string = req.method + " " + req.path + " - " + req.ip;
+   console.log(req.method + " " + req.path + " - " + req.ip);
    next();
  });
 
