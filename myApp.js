@@ -26,8 +26,8 @@ function GetTime(){
    return new Date().toString;
 }
 
-app.get('/new', function(req, res, next) {
-   req.time = GetTime();  // Hypothetical synchronous operation
+app.get('/now', function(req, res, next) {
+   req.time = GetTime();
    next();
  }, function(req, res) {
    res.json({time: req.time});
