@@ -3,12 +3,14 @@ var app = express();
 require('dotenv').config()
 var bodyParser = require("body-parser");
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(function middleware(req, res, next) {
    console.log(req.method + " " + req.path + " - " + req.ip);
    next();
  });
 
- app.use(bodyParser.urlencoded({ extended: false }));
+
 
 var absolutePath = __dirname + "/views/index.html"
    app.get("/", (req, res) => {res.sendFile(absolutePath)})
@@ -54,6 +56,12 @@ app.get(
    res.json({
      name: `${firstName} ${lastName}`
    });
+ });
+ 
+ app.post("/name", function(req, res) {
+
+   var string = req.body.first + " " + req.body.last;
+   res.json({ name: string });
  });
 
 
