@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
+const Schema = mongoose.Schema;
 mongoose
     .connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
@@ -12,7 +13,11 @@ mongoose
     .catch((err) => {
         console.error('Error connecting to Mongo', err);
     });
-
+    const personSchema = new Schema({
+      name: { type: String, required: true },
+      age: Number,
+      favoriteFoods: [String]
+    });
 
 let Person;
 
