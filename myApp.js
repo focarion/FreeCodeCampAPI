@@ -19,7 +19,7 @@ mongoose
       favoriteFoods: [String]
     });
     const Person = mongoose.model("Person", personSchema);
-let Person;
+
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
