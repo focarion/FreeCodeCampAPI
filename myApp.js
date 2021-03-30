@@ -22,7 +22,13 @@ mongoose
 
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  var MadraTossilan = new Person({name: "Madra Tossilan", age: 21, favoriteFoods: ["pizza", "hamburger", "orange"]});
+
+  MadraTossilan.save(function(err, data)
+  {
+    if(err) return console.error(err);
+    done(null, data)
+  })
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
