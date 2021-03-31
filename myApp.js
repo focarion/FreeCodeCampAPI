@@ -29,9 +29,17 @@ mongoose
         done(null, data)
       });
     };
+var arrayPeople = [
+      {name: "Madra", age: 21, favoriteFoods: ["Pizza"]},
+      {name: "Josh", age: 76, favoriteFoods: ["Hamburger"]},
+      {name: "Johnathan", age: 78, favoriteFoods: ["Peaches"]}
+    ];
 
-const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+const createManyPeople = (arrayPeople, done) => {
+  Person.create(arrayPeople, function (err, people) {
+    if (err) return console.log(err);
+  done(null, people);
+});
 };
 
 const findPeopleByName = (personName, done) => {
