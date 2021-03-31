@@ -13,12 +13,12 @@ mongoose
     .catch((err) => {
         console.error('Error connecting to Mongo', err);
     });
-    const personSchema = new Schema({
-      name: { type: String, required: true },
+    var personSchema = new mongoose.Schema({
+      name: String,
       age: Number,
       favoriteFoods: [String]
     });
-    const Person = mongoose.model("Person", personSchema);
+    var Person = mongoose.model('Person', personSchema);
 
 
     var createAndSavePerson = function(done) {
